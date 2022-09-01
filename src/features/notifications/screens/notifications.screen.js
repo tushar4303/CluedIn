@@ -1,6 +1,12 @@
 import React from "react";
-import { SafeAreaView, View, StyleSheet, StatusBar } from "react-native";
-import { NotificationInfo } from "../components/notification-info-card.component";
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  StatusBar,
+  ScrollView,
+} from "react-native";
+import UIComponent from "../components/notification-info-card.component";
 import { Text as PaperText, Chip, Divider } from "react-native-paper";
 
 export const NotificationsScreen = () => (
@@ -17,9 +23,12 @@ export const NotificationsScreen = () => (
         filter
       </Chip>
     </View>
-    <View style={styles.list}>
-      <NotificationInfo />
-    </View>
+    <ScrollView style={styles.list}>
+      <UIComponent />
+      <UIComponent />
+      <UIComponent />
+      <UIComponent />
+    </ScrollView>
   </SafeAreaView>
 );
 
@@ -34,11 +43,12 @@ const styles = StyleSheet.create({
   },
   chip: {
     flexDirection: "row",
-    paddingLeft: 16,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
   },
   list: {
     flex: 1,
-    padding: 16,
+    paddingHorizontal: 16,
     backgroundColor: "white",
   },
 });
