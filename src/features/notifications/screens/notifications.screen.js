@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState, useMemo } from "react";
+import React, { useRef } from "react";
+
 import {
   SafeAreaView,
   View,
@@ -15,47 +16,52 @@ export const NotificationsScreen = () => {
   const refRBSheet = useRef();
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.title}>
-        <PaperText variant="headlineSmall">Notifications</PaperText>
-      </View>
-      <View style={styles.chip}>
-        <Chip onPress={() => refRBSheet.current.open()} compact="true">
-          Label
-        </Chip>
-        <Chip compact="true" style={{ marginLeft: 8 }}>
-          Unread
-        </Chip>
-        <Chip compact="true" style={{ marginLeft: 8 }}>
-          filter
-        </Chip>
-      </View>
-      <ScrollView style={styles.list}>
-        <UIComponent />
-        <UIComponent />
-        <UIComponent />
-        <UIComponent />
-      </ScrollView>
-      <RBSheet
-        ref={refRBSheet}
-        closeOnDragDown={true}
-        closeOnPressMask={false}
-        animationType="fade"
-        dragFromTopOnly={true}
-        closeOnPressBack={true}
-        customStyles={{
-          wrapper: {
-            // backgroundColor: "transparent",
-            shadowOpacity: 20,
-          },
-          draggableIcon: {
-            backgroundColor: "#000",
-          },
-        }}
-      >
-        <Text>hello</Text>
-      </RBSheet>
-    </SafeAreaView>
+    <>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.title}>
+          <PaperText variant="headlineSmall">Notifications</PaperText>
+        </View>
+        <View style={styles.chip}>
+          <Chip onPress={() => refRBSheet.current.open()} compact="true">
+            Label
+          </Chip>
+          <Chip compact="true" style={{ marginLeft: 8 }}>
+            Unread
+          </Chip>
+          <Chip compact="true" style={{ marginLeft: 8 }}>
+            filter
+          </Chip>
+        </View>
+        <ScrollView style={styles.list}>
+          <UIComponent />
+          <UIComponent />
+          <UIComponent />
+          <UIComponent />
+        </ScrollView>
+        <RBSheet
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={false}
+          animationType="fade"
+          dragFromTopOnly={true}
+          closeOnPressBack={true}
+          customStyles={{
+            wrapper: {
+              // backgroundColor: "transparent",
+              shadowOpacity: 20,
+            },
+            container: {
+              borderRadius: 8,
+            },
+            draggableIcon: {
+              backgroundColor: "#000",
+            },
+          }}
+        >
+          <Text>hello</Text>
+        </RBSheet>
+      </SafeAreaView>
+    </>
   );
 };
 
