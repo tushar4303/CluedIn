@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useMemo } from "react";
 import {
   SafeAreaView,
   View,
@@ -9,13 +9,10 @@ import {
 } from "react-native";
 import UIComponent from "../components/notification-info-card.component";
 import { Text as PaperText, Chip } from "react-native-paper";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import RBSheet from "react-native-raw-bottom-sheet";
 
 export const NotificationsScreen = () => {
-  const sheetRef = useRef < BottomSheet > null;
-  const [isOpen, setIsOpen] = useState(true);
-
-  const snapPoints = ["40%", "60%", "80%"];
+  const refRBSheet = useRef();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -23,7 +20,9 @@ export const NotificationsScreen = () => {
         <PaperText variant="headlineSmall">Notifications</PaperText>
       </View>
       <View style={styles.chip}>
-        <Chip compact="true">Label</Chip>
+        <Chip onPress={() => refRBSheet.current.open()} compact="true">
+          Label
+        </Chip>
         <Chip compact="true" style={{ marginLeft: 8 }}>
           Unread
         </Chip>
@@ -37,16 +36,25 @@ export const NotificationsScreen = () => {
         <UIComponent />
         <UIComponent />
       </ScrollView>
-      <BottomSheet
-        style={{ backgroundColor: "grey" }}
-        ref={sheetRef}
-        snapPoints={snapPoints}
-        enablePanDownToClose={true}
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        animationType="fade"
+        dragFromTopOnly={true}
+        closeOnPressBack={true}
+        customStyles={{
+          wrapper: {
+            // backgroundColor: "transparent",
+            shadowOpacity: 20,
+          },
+          draggableIcon: {
+            backgroundColor: "#000",
+          },
+        }}
       >
-        <BottomSheetView>
-          <Text>Hello</Text>
-        </BottomSheetView>
-      </BottomSheet>
+        <Text>hello</Text>
+      </RBSheet>
     </SafeAreaView>
   );
 };

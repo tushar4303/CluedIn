@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, Image, Pressable, Text } from "react-native";
-import styled from "styled-components";
 
 function UIComponent({ onPress, style }) {
   return (
