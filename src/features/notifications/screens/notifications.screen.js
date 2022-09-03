@@ -7,9 +7,10 @@ import {
   ScrollView,
   Text,
   Pressable,
+  FlatList,
 } from "react-native";
 import UIComponent from "../components/notification-info-card.component";
-import { Text as PaperText, Chip } from "react-native-paper";
+import { Text as PaperText, Chip, Divider } from "react-native-paper";
 import RBSheet from "react-native-raw-bottom-sheet";
 
 export const NotificationsScreen = () => {
@@ -31,12 +32,23 @@ export const NotificationsScreen = () => {
           filter
         </Chip>
       </View>
-      <ScrollView style={styles.list}>
-        <UIComponent />
-        <UIComponent />
-        <UIComponent />
-        <UIComponent />
-      </ScrollView>
+      <Divider />
+      <FlatList
+        data={[
+          { messageId: 1 },
+          { messageId: 2 },
+          { messageId: 3 },
+          { messageId: 4 },
+          { messageId: 5 },
+          { messageId: 6 },
+          { messageId: 7 },
+          { messageId: 8 },
+          { messageId: 9 },
+          { messageId: 10 },
+        ]}
+        renderItem={() => <UIComponent />}
+        keyExtractor={(item) => item.messageId}
+      />
       <RBSheet
         ref={refRBSheet}
         closeOnDragDown={true}
@@ -57,6 +69,38 @@ export const NotificationsScreen = () => {
           },
         }}
       >
+        <Pressable
+          onPress={() => {}}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed ? "#f2f3f4" : "white",
+            },
+            styles.wrapperCustom,
+          ]}
+        >
+          <Text style={{ justifyContent: "center", textAlign: "center" }}>
+            Placement
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {}}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed ? "#f2f3f4" : "white",
+            },
+            styles.wrapperCustom,
+          ]}
+        >
+          <Text
+            style={{
+              justifyContent: "center",
+              textAlign: "center",
+              marginHorizontal: 16,
+            }}
+          >
+            Placement
+          </Text>
+        </Pressable>
         <Pressable
           onPress={() => {}}
           style={({ pressed }) => [
