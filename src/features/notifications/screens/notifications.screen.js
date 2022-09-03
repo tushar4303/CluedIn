@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, useMemo } from "react";
+import React, { useRef } from "react";
 import {
   SafeAreaView,
   View,
@@ -6,6 +6,7 @@ import {
   StatusBar,
   ScrollView,
   Text,
+  Pressable,
 } from "react-native";
 import UIComponent from "../components/notification-info-card.component";
 import { Text as PaperText, Chip } from "react-native-paper";
@@ -48,12 +49,27 @@ export const NotificationsScreen = () => {
             // backgroundColor: "transparent",
             shadowOpacity: 20,
           },
+          container: {
+            borderRadius: 15,
+          },
           draggableIcon: {
             backgroundColor: "#000",
           },
         }}
       >
-        <Text>hello</Text>
+        <Pressable
+          onPress={() => {}}
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed ? "#f2f3f4" : "white",
+            },
+            styles.wrapperCustom,
+          ]}
+        >
+          <Text style={{ justifyContent: "center", textAlign: "center" }}>
+            Placement
+          </Text>
+        </Pressable>
       </RBSheet>
     </SafeAreaView>
   );
